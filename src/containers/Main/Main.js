@@ -1,15 +1,54 @@
-import React  from 'react';
+import React, { Component }  from 'react';
 import './Main.css';
 import { Switch, Route } from 'react-router-dom';
 import ArtistSearchResult from '../../components/ArtistSearchResult/ArtistSearchResult';
-import Albums from '../../components/Albums/Albums';
+import Albums from '../Albums/Albums';
+import UserSearch from '../../components/UserSearch/UserSearch';
 
-const Main = (props) => (
-    <Switch>
-        {/* <Route path='/artist=' component={ArtistSearchResult}  /> */}
-        <Route path='/artist=' render={() => <ArtistSearchResult searchingArtist={props.searchingArtist}/> } />
-        <Route path='/artist=/album=' component={Albums} />
-    </Switch>
-)
+class Main extends Component {
+    state = {
+        addText: '',
+        searched: false ,
+        // chosenArtist: ''
+    }
+
+    handleAddTextChange = (text) => {
+        this.setState({
+            addText: text
+        });
+    }
+
+    handleAddSearch = (e) => {
+        e.preventDefault();
+        this.props.history.push('/search=' + this.state.addText);
+        this.setState({ 
+            searched: true
+        });
+        // //this.props.history.push('/artist=' + this.state.searchingArtist);
+        // this.setState({
+        //     searchingArtist: this.state.addText,
+        //     //addText: ''
+    }
+
+    // handleChosenArtist = (artist) => {
+    //     this.setState({
+    //         chosenArtist: artist
+    //     });
+    // }
+
+    render() {
+        return (
+            <div>
+                <UserSearch
+                    onAddTextChange={this.handleAddTextChange}
+                    value={this.state.addText}
+                    onAddSearch={this.handleAddSearch} />
+                { this.state.searched ? <ArtistSearchResult
+                searchingArtist={this.state.addText}
+                chosenArtist={this.chosenArtist}  /> : null }
+            </div>
+        )
+    }
+}
 
 export default Main;
