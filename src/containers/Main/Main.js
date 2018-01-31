@@ -24,6 +24,7 @@ class Main extends Component {
         this.setState({ 
             searched: true
         });
+       
         // //this.props.history.push('/artist=' + this.state.searchingArtist);
         // this.setState({
         //     searchingArtist: this.state.addText,
@@ -37,6 +38,9 @@ class Main extends Component {
     // }
 
     render() {
+        //console.log(this.props.isArtistChosen);
+        console.log(this.props.chosenArtist);
+        console.log(this.props.artistData);
         return (
             <div>
                 <UserSearch
@@ -45,7 +49,8 @@ class Main extends Component {
                     onAddSearch={this.handleAddSearch} />
                 { this.state.searched ? <ArtistSearchResult
                 searchingArtist={this.state.addText}
-                chosenArtist={this.chosenArtist}  /> : null }
+                // onChoseArtist={this.onChoseArtist}
+                  /> : null }
             </div>
         )
     }

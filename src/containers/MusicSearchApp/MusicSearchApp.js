@@ -9,22 +9,54 @@ import { withRouter } from "react-router-dom";
 class MusicSearchApp extends Component {
     state = {
         chosenArtist: '',
-        isArtistChosen: false
+        //isArtistChosen: false,
+        artistData: []
     }
 
-    handleChosenArtist = (artist) => {
-        artist.preventDefault();
-        this.setState({
-            chosenArtist: artist,
-            isArtistChosen: true
-        });
+    componentWillMount() {
+
+
+        // handleChosenArtist = (artist) => {
+        if (localStorage.getItem('artistData')) {
+            const artistData = JSON.parse(localStorage.getItem('artistData'));
+            const chosenArtist = artistData.name;
+
+            this.setState({ 
+                artistData,
+                chosenArtist,
+               // isArtistChosen: true
+            });
+        }
+    
     }
+
+    // handleChosenArtist = (artist) => {
+    //     artist.preventDefault();
+    //     this.setState({
+    //         chosenArtist: artist.name,
+    //         isArtistChosen: true
+
+    //     });
+    //     //this.props.history.push('/artist=' + this.state.chosenArtist);
+    // }
 
     render() {
+        console.log(this.state.chosenArtist);
+        console.log(this.state.artistData);
+        const chosenArtist=this.state.chosenArtist;
         return (
             <Switch>
-                <Route path='/' component={Main} />
-        { this.state.isArtistChosen ? <Route path='/artist=' render={() => <Albums chosenArtist={this.handleChosenArtist}/>} /> : null }
+                <Route path='/artist/' render={(props) => <Albums {...props} chosenArtist={this.state.chosenArtist} />} />
+                {/* <Route path='/' component={Main} /> */}
+                <Route path='/' render={(props) => <Main {...props}
+                    // onChoseArtist={this.handleChosenArtist}
+                    artistData={this.state.artistData}
+                    chosenArtist={this.state.chosenArtist}
+                />}
+                /> }
+                    />
+                {/* render={() => <Main onChoseArtist={this.handleChosenArtist}/>} */}
+                {/* { this.state.isArtistChosen ? <Route path='/artist=' render={() => <Albums chosenArtist={this.handleChosenArtist}/>} /> : null } */}
             </Switch>
         )
     }

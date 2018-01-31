@@ -1,0 +1,9 @@
+.albumsContainer {
+    background-color: rgb(164, 202, 202);
+}
+
+.albums {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

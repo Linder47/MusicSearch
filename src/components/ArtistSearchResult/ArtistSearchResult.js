@@ -21,7 +21,6 @@ class ArtistSearchResult extends Component {
 
 
     componentDidMount() {
-
         const searchingArtist = this.props.searchingArtist;
         console.log(this.props);
         const URL_BASIC = 'http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=';
@@ -65,6 +64,9 @@ class ArtistSearchResult extends Component {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
             return <div>Loading...</div>;
+        } else if (artistmat.artist.length === 0) {
+            return <div className='ASRNone'>Такого артиста нет.</div>
+        
         } else {
             return (
                 <div className="ASR">
@@ -75,9 +77,10 @@ class ArtistSearchResult extends Component {
                             //     {artist.name}
                             // </li>
                             return <Artist
-                            key={artist.name}
-                            artist={artist}
-                            chosenArtist={this.chosenArtist} />;
+                                key={artist.name}
+                                artist={artist}
+                            // onChoseArtist={this.props.onChoseArtist} 
+                            />;
                         })}
                     </ul>
                 </div>
