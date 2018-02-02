@@ -9,14 +9,10 @@ import { withRouter } from "react-router-dom";
 class MusicSearchApp extends Component {
     state = {
         chosenArtist: '',
-        //isArtistChosen: false,
         artistData: []
     }
 
     componentWillMount() {
-
-
-        // handleChosenArtist = (artist) => {
         if (localStorage.getItem('artistData')) {
             const artistData = JSON.parse(localStorage.getItem('artistData'));
             const chosenArtist = artistData.name;
@@ -24,21 +20,9 @@ class MusicSearchApp extends Component {
             this.setState({ 
                 artistData,
                 chosenArtist,
-               // isArtistChosen: true
             });
         }
-    
     }
-
-    // handleChosenArtist = (artist) => {
-    //     artist.preventDefault();
-    //     this.setState({
-    //         chosenArtist: artist.name,
-    //         isArtistChosen: true
-
-    //     });
-    //     //this.props.history.push('/artist=' + this.state.chosenArtist);
-    // }
 
     render() {
         console.log(this.state.chosenArtist);
@@ -60,26 +44,6 @@ class MusicSearchApp extends Component {
             </Switch>
         )
     }
-    // state = {
-    //     addText: '',
-    //     searchingArtist: '',
-    // }
-
-    // handleAddTextChange = (text) => {
-    //     this.setState({
-    //         addText: text
-    //     });
-    // }
-
-    // handleAddSearch = () => {
-    //     this.props.history.push('/artist=' + this.state.searchingArtist);
-    //     this.setState({
-    //         searchingArtist: this.state.addText,
-    //         addText: ''
-    //     });
-    // }
-
-
 }
 
 export default MusicSearchApp;
