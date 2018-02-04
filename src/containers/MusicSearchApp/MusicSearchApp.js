@@ -5,6 +5,7 @@ import UserSearch from '../../components/UserSearch/UserSearch';
 import Main from '../Main/Main';
 import Albums from '../Albums/Albums';
 import { withRouter } from "react-router-dom";
+//import 'bootstrap/less/bootstrap.less'
 
 class MusicSearchApp extends Component {
     state = {
@@ -29,6 +30,7 @@ class MusicSearchApp extends Component {
         console.log(this.state.artistData);
         const chosenArtist=this.state.chosenArtist;
         return (
+            <div className="MSA">
             <Switch>
                 <Route path='/artist/' render={(props) => <Albums {...props} chosenArtist={this.state.chosenArtist} />} />
                 {/* <Route path='/' component={Main} /> */}
@@ -42,6 +44,7 @@ class MusicSearchApp extends Component {
                 {/* render={() => <Main onChoseArtist={this.handleChosenArtist}/>} */}
                 {/* { this.state.isArtistChosen ? <Route path='/artist=' render={() => <Albums chosenArtist={this.handleChosenArtist}/>} /> : null } */}
             </Switch>
+            </div>
         )
     }
 }

@@ -10,7 +10,6 @@ class Artist extends Component {
     }
 
     render() {
-         console.log(this.props.artistData);
         return (
             <div className="Artist">
                 {/* <li key={this.props.artist.name}> */}
