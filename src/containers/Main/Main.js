@@ -10,7 +10,6 @@ class Main extends Component {
         addText: '',
         searched: false,
         oldArtist: '',
-        mewA: false
     }
 
     handleAddTextChange = (text) => {
@@ -22,24 +21,29 @@ class Main extends Component {
     handleAddSearch = (e) => {
         e.preventDefault();
 
-        if (this.state.addText != this.state.oldArtist) {
-            this.props.history.push('/search=' + this.state.addText);
+        if (this.state.addText !== this.state.oldArtist) {
+            this.props.history.push('/search/' + this.state.addText);
 
-            if (this.state.oldArtist !== this.state.addText) {
-                this.setState({
-                    searched: true,
-                    oldArtist: this.state.addText
-                });
-            }
+            this.setState({
+                searched: true,
+                oldArtist: this.state.addText
+            });
         }
     }
 
-    // handleMakeFalse = () => {
-    //     this.setState({
-    //         searched: false,
-    //         newA: true
-    //     })
-    // }
+    componentDidMount() {      
+        if (this.props.history.location.pathname !== '/' ) {
+            const path = this.props.history.location.pathname
+            const ind = path.indexOf('/', 1);
+            const artist = path.substr(ind+1);
+
+            this.setState({
+                oldArtist: artist,
+                searched: true,
+                addText: artist
+            });
+        }     
+    }
 
     render() {
         console.log(this.state.addText);
@@ -50,15 +54,9 @@ class Main extends Component {
                     onAddTextChange={this.handleAddTextChange}
                     value={this.state.addText}
                     onAddSearch={this.handleAddSearch} />
-                {/* {this.state.searched ? this.state.addText === this.state.oldArtist ? null : <ArtistSearchResult
-                    searchingArtist={this.state.addText} />
-                : null } */}
                 {this.state.searched ? <ArtistSearchResult
-                    searchingArtist={this.state.oldArtist}
-                    // handleMakeFalse={this.handleMakeFalse}
-                    // newA={this.state.newA} 
-                    />
-                : null }
+                    searchingArtist={this.state.oldArtist} />
+                    : null}
             </div>
         )
     }

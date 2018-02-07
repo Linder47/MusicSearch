@@ -5,7 +5,6 @@ import UserSearch from '../../components/UserSearch/UserSearch';
 import Main from '../Main/Main';
 import Albums from '../Albums/Albums';
 import { withRouter } from "react-router-dom";
-//import 'bootstrap/less/bootstrap.less'
 
 class MusicSearchApp extends Component {
     state = {
@@ -14,36 +13,41 @@ class MusicSearchApp extends Component {
     }
 
     componentWillMount() {
-        if (localStorage.getItem('artistData')) {
-            const artistData = JSON.parse(localStorage.getItem('artistData'));
+        if (sessionStorage.getItem('artistData')) {
+            const artistData = JSON.parse(sessionStorage.getItem('artistData'));
+
+        // if (localStorage.getItem('artistData')) {
+        //     const artistData = JSON.parse(localStorage.getItem('artistData'));
             const chosenArtist = artistData.name;
 
-            this.setState({ 
+            this.setState({
                 artistData,
                 chosenArtist,
             });
         }
     }
 
+    handleComeBackSearching = () => {
+         this.props.history.goBack();   
+    }
+
     render() {
         console.log(this.state.chosenArtist);
         console.log(this.state.artistData);
-        const chosenArtist=this.state.chosenArtist;
+        const chosenArtist = this.state.chosenArtist;
         return (
             <div className="MSA">
-            <Switch>
-                <Route path='/artist/' render={(props) => <Albums {...props} chosenArtist={this.state.chosenArtist} />} />
-                {/* <Route path='/' component={Main} /> */}
-                <Route path='/' render={(props) => <Main {...props}
-                    // onChoseArtist={this.handleChosenArtist}
-                    artistData={this.state.artistData}
-                    chosenArtist={this.state.chosenArtist}
-                />}
-                /> }
+                <Switch>
+                    <Route path='/artist/' render={(props) => <Albums {...props}
+                        chosenArtist={this.state.chosenArtist}
+                        onComeBackSearching={this.handleComeBackSearching} />} />
+                    <Route path='/' render={(props) => <Main {...props}
+                        artistData={this.state.artistData}
+                        chosenArtist={this.state.chosenArtist}
+                    />}
+                    /> }
                     />
-                {/* render={() => <Main onChoseArtist={this.handleChosenArtist}/>} */}
-                {/* { this.state.isArtistChosen ? <Route path='/artist=' render={() => <Albums chosenArtist={this.handleChosenArtist}/>} /> : null } */}
-            </Switch>
+              </Switch>
             </div>
         )
     }

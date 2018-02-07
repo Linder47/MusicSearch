@@ -9,34 +9,27 @@ class ArtistSearchResult extends Component {
         error: null,
         isLoaded: false,
         sA: '',
-        do: true,
+        do: false,
     }
 
     componentWillReceiveProps(searchingArtist) {
-
         this.setState({
             sA: this.props.searchingArtist,
             do: true,
         });
     }
 
-    componentDidMount() {
-        const searchingArtist = this.props.searchingArtist;
-        const sA = this.props.searchingArtist;
-
-        console.log(this.props);
+    handleFetchMatchs = (neededArtist) => {
         const URL_BASIC = 'http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=';
         const API_KEY = '&api_key=0b6cf004801c7d4b103426b29c6e006b&format=json';
 
-        fetch(URL_BASIC + sA + API_KEY) //!
+        fetch(URL_BASIC + neededArtist + API_KEY) //!
             .then(res => res.json())
             .then((results) => {
                 console.log(results);
                 this.setState({
                     isLoaded: true,
                     artistmat: results.results.artistmatches,
-                    sA: searchingArtist
-                    
                 });
             },
             (error) => {
@@ -48,43 +41,29 @@ class ArtistSearchResult extends Component {
             );
     }
 
+    componentDidMount() {
+            const sA = this.props.searchingArtist;
+
+            this.handleFetchMatchs(sA);
+            console.log(this.props);
+    }
+
     componentDidUpdate(searchingArtist, sA) {
         if (this.props.searchingArtist !== sA && this.state.do === true) {
             const searchingArtist = this.props.searchingArtist;
-            const sA = this.state.sA;
 
+            this.handleFetchMatchs(searchingArtist);
             console.log(this.props);
-            const URL_BASIC = 'http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=';
-            const API_KEY = '&api_key=0b6cf004801c7d4b103426b29c6e006b&format=json';
 
-
-            fetch(URL_BASIC + searchingArtist + API_KEY) //!
-                .then(res => res.json())
-                .then((results) => {
-                    console.log(results);
-                    this.setState({
-                        isLoaded: true,
-                        artistmat: results.results.artistmatches,
-                    });
-                },
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-                );
-
-                this.setState({
-                    do: false,
-                    newA: false
-                });
+            this.setState({
+                do: false
+            });
         }
     }
 
 
     render() {
-        const { error, isLoaded, artistmat, sA } = this.state;
+        const { error, isLoaded, artistmat } = this.state;
         console.log(artistmat);
 
         if (error) {
@@ -103,6 +82,7 @@ class ArtistSearchResult extends Component {
                             return <Artist
                                 key={artist.name}
                                 artist={artist}
+                                searchingArtist={this.props.searchingArtist}
                             />;
                         })}
                     </ListGroup>

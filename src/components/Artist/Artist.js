@@ -5,14 +5,20 @@ import { ListGroupItem } from 'react-bootstrap';
 
 class Artist extends Component {
     onChoseArtist = (artist) => {
-        localStorage.clear();
-        localStorage.setItem('artistData', JSON.stringify(artist));
+        sessionStorage.clear();
+        sessionStorage.setItem('artistData', JSON.stringify(artist));
+        //localStorage.setItem('searchingArtist', JSON.stringify(this.props.searchingArtist));
     }
+
+    // onChoseArtist = (artist) => {
+    //     localStorage.clear();
+    //     localStorage.setItem('artistData', JSON.stringify(artist));
+    //     //localStorage.setItem('searchingArtist', JSON.stringify(this.props.searchingArtist));
+    // }
 
     render() {
         return (
-            <div className="Artist">
-                {/* <li key={this.props.artist.name}> */}
+            <div className="Artist">             
                 <ListGroupItem>
                     <Link
                         to={'/artist/' + this.props.artist.name}

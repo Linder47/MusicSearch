@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './UserSearch.css';
 import { Form, FormGroup, ControlLabel, FormControl, Button, Col } from 'react-bootstrap';
 
@@ -10,7 +10,7 @@ const UserSearch = (props) => {
                     <Col componentClass={ControlLabel} sm={2}>
                         Поиск:
                 </Col>
-                    <Col sm={7}>
+                    <Col sm={6}>
                         <FormControl
                             type='text'
                             value={props.value}

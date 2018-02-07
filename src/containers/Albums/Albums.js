@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './Albums.css';
 import Album from '../../components/Album/Album';
+import { ButtonToolbar, Button } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom'
 
 class Albums extends Component {
     state = {
@@ -34,6 +36,10 @@ class Albums extends Component {
             );
     }
 
+    onComeBackSearching = () => {
+         this.props.history.goBack();    
+    }
+
     render() {
         console.log(this.state.albums);
         const { error, isLoaded, albums } = this.state;
@@ -46,18 +52,21 @@ class Albums extends Component {
             return (
                 <div className='albumsContainer'>
                     <p>Альбомы {this.props.chosenArtist}: </p>
-
+                    <ButtonToolbar>
+                        <Button onClick={() => { this.onComeBackSearching() }}>Назад</Button>
+                    </ButtonToolbar>
                     <div className='albums'>
-                        {albums.album.map(album => {
-                            return <Album
-                                key={album.name}
+                        {albums.album.map(album => 
+                            { return <Album
+                                key={album.name + album.id}
+                                id={album.name + album.id}
                                 image={album.image[2]["#text"]}
-                            />;
-                        })}
+                            /> } 
+                          ) }
                     </div>
                 </div>
             )
         }
     }
 }
-export default Albums;
+export default withRouter(Albums);
