@@ -37,7 +37,7 @@ class Albums extends Component {
     }
 
     onComeBackSearching = () => {
-         this.props.history.goBack();    
+        this.props.history.goBack();
     }
 
     render() {
@@ -57,12 +57,13 @@ class Albums extends Component {
                     </ButtonToolbar>
                     <div className='albums'>
                         {albums.album.map(album => 
-                            { return <Album
+                              album.image[2]["#text"] ? <Album
                                 key={album.name + album.id}
                                 id={album.name + album.id}
                                 image={album.image[2]["#text"]}
-                            /> } 
-                          ) }
+                            />
+                         : null 
+                        )}
                     </div>
                 </div>
             )

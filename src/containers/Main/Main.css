@@ -5,4 +5,9 @@
     margin: auto; */
     background-color: rgb(233, 166, 166);
     width: 800px;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    border: 7px solid #fff;
+    /* background-color: #fff; */
 }

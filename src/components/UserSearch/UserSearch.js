@@ -1,25 +1,28 @@
 import React from 'react';
 import './UserSearch.css';
-import { Form, FormGroup, ControlLabel, FormControl, Button, Col } from 'react-bootstrap';
+import { Form, FormGroup, ControlLabel, FormControl, Button, Col, Row } from 'react-bootstrap';
 
 const UserSearch = (props) => {
     return (
         <div className='UserSearchForm'>
             <Form horizontal onSubmit={props.onAddSearch}>
                 <FormGroup controlId='formHorizontalSearch'>
+                <Row className="rowInput">
                     <Col componentClass={ControlLabel} sm={2}>
-                        Поиск:
+                        <p>Поиск:</p>
                 </Col>
-                    <Col sm={6}>
+                    <Col sm={7}>
                         <FormControl
                             type='text'
                             value={props.value}
+                            maxLength="60"
                             onChange={(e) => { props.onAddTextChange(e.target.value) }} />
                     </Col>
-                    <Col sm={2}>
+                    <Col sm={3}>
                         <Button type='submit'>
-                            Искать {props.value}</Button>
+                            Искать</Button>
                     </Col>
+                    </Row>
                 </FormGroup>
             </Form>
         </div>

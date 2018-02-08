@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ArtistSearchResult.css';
 import Artist from '../Artist/Artist';
-import { ListGroup } from 'react-bootstrap';
+import { ListGroup, Panel } from 'react-bootstrap';
 
 class ArtistSearchResult extends Component {
     state = {
@@ -42,10 +42,10 @@ class ArtistSearchResult extends Component {
     }
 
     componentDidMount() {
-            const sA = this.props.searchingArtist;
+        const sA = this.props.searchingArtist;
 
-            this.handleFetchMatchs(sA);
-            console.log(this.props);
+        this.handleFetchMatchs(sA);
+        console.log(this.props);
     }
 
     componentDidUpdate(searchingArtist, sA) {
@@ -76,16 +76,20 @@ class ArtistSearchResult extends Component {
         } else {
             return (
                 <div className="ASR">
-                    <p>Результаты поиска по {this.props.searchingArtist}: </p>
-                    <ListGroup>
-                        {artistmat.artist.map(artist => {
-                            return <Artist
-                                key={artist.name}
-                                artist={artist}
-                                searchingArtist={this.props.searchingArtist}
-                            />;
-                        })}
-                    </ListGroup>
+                    <Panel>
+                        <Panel.Title componentClass="h3" className="pannel">Результаты поиска по {this.props.searchingArtist}: </Panel.Title>
+                    </Panel>
+                    <Panel.Body>
+                        <ListGroup>
+                            {artistmat.artist.map(artist => {
+                                return <Artist
+                                    key={artist.name}
+                                    artist={artist}
+                                    searchingArtist={this.props.searchingArtist}
+                                />;
+                            })}
+                        </ListGroup>
+                    </Panel.Body>
                 </div>
             );
         }

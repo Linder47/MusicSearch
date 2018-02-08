@@ -5,6 +5,7 @@ import UserSearch from '../../components/UserSearch/UserSearch';
 import Main from '../Main/Main';
 import Albums from '../Albums/Albums';
 import { withRouter } from "react-router-dom";
+import { PageHeader } from 'react-bootstrap';
 
 class MusicSearchApp extends Component {
     state = {
@@ -16,8 +17,8 @@ class MusicSearchApp extends Component {
         if (sessionStorage.getItem('artistData')) {
             const artistData = JSON.parse(sessionStorage.getItem('artistData'));
 
-        // if (localStorage.getItem('artistData')) {
-        //     const artistData = JSON.parse(localStorage.getItem('artistData'));
+            // if (localStorage.getItem('artistData')) {
+            //     const artistData = JSON.parse(localStorage.getItem('artistData'));
             const chosenArtist = artistData.name;
 
             this.setState({
@@ -28,7 +29,7 @@ class MusicSearchApp extends Component {
     }
 
     handleComeBackSearching = () => {
-         this.props.history.goBack();   
+        this.props.history.goBack();
     }
 
     render() {
@@ -37,6 +38,9 @@ class MusicSearchApp extends Component {
         const chosenArtist = this.state.chosenArtist;
         return (
             <div className="MSA">
+            <div className="pageHeader">
+                <PageHeader>Music Search App</PageHeader>
+                </div>
                 <Switch>
                     <Route path='/artist/' render={(props) => <Albums {...props}
                         chosenArtist={this.state.chosenArtist}

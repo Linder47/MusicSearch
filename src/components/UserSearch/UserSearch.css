@@ -1,0 +1,13 @@
+.UserSearchForm {
+    width: 780px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.rowInput {
+    align-content: center;
+    background-color: azure;
+    width: 700px;
+}
