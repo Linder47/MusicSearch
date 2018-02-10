@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Albums.css';
 import Album from '../../components/Album/Album';
-import { ButtonToolbar, Button } from 'react-bootstrap';
+import { ButtonToolbar, Button, Panel } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom'
 
 class Albums extends Component {
@@ -50,19 +50,21 @@ class Albums extends Component {
             return <div>Loading...</div>;
         } else {
             return (
-                <div className='albumsContainer'>
-                    <p>Альбомы {this.props.chosenArtist}: </p>
+                <div className='albums-container'>
+                    <Panel>
+                        <Panel.Title componentClass="h3" className="panel__title--albums">Альбомы {this.props.chosenArtist}: </Panel.Title>
+                    </Panel>
                     <ButtonToolbar>
-                        <Button onClick={() => { this.onComeBackSearching() }}>Назад</Button>
+                        <Button className="row__button--albums" onClick={() => { this.onComeBackSearching() }}>Назад</Button>
                     </ButtonToolbar>
-                    <div className='albums'>
-                        {albums.album.map(album => 
-                              album.image[2]["#text"] ? <Album
+                    <div className='albums__albums'>
+                        {albums.album.map(album =>
+                            album.image[2]["#text"] ? <Album
                                 key={album.name + album.id}
                                 id={album.name + album.id}
                                 image={album.image[2]["#text"]}
                             />
-                         : null 
+                                : null
                         )}
                     </div>
                 </div>

@@ -1,9 +1,37 @@
-.albumsContainer {
-    background-color: rgb(164, 202, 202);
+.albums-container {
+    /* background-color: #fff; */
+    width: 800px;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    border: 7px solid #FEFCFF;
+    margin-top: 20px;
 }
 
-.albums {
+.albums__albums {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin: auto;
+    margin-left: 30px;
+    margin-right: 20px;
+    margin-top: 13px;
+}
+
+.panel__title--albums {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.row__button--albums {
+    display: flex;
+    margin: auto;
+    background-color: #FEFCFF;
+}
+
+.row__button--albums:active,
+.row__button--albums:focus {
+    border-color: rgb(216, 181, 221);
+    box-shadow: 0 0 0 0.2rem rgba(233,207,236,.65);
+    background-color: #FEFCFF;
 }

@@ -71,15 +71,15 @@ class ArtistSearchResult extends Component {
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else if (artistmat.artist.length === 0) {
-            return <div className='ASRNone'>Такого артиста нет.</div>
+            return <div>Такого артиста нет.</div>
 
         } else {
             return (
-                <div className="ASR">
+                <div>
                     <Panel>
-                        <Panel.Title componentClass="h3" className="pannel">Результаты поиска по {this.props.searchingArtist}: </Panel.Title>
+                        <Panel.Title componentClass="h3" className="panel__title">Результаты поиска по {this.props.searchingArtist}: </Panel.Title>
                     </Panel>
-                    <Panel.Body>
+                    <Panel.Body className="panel__body">
                         <ListGroup>
                             {artistmat.artist.map(artist => {
                                 return <Artist

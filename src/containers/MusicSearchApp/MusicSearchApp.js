@@ -37,8 +37,8 @@ class MusicSearchApp extends Component {
         console.log(this.state.artistData);
         const chosenArtist = this.state.chosenArtist;
         return (
-            <div className="MSA">
-            <div className="pageHeader">
+            <div className="app-main-page">
+            <div className="page-header">
                 <PageHeader>Music Search App</PageHeader>
                 </div>
                 <Switch>

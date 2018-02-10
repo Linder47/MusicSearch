@@ -1,0 +1,13 @@
+.artist__list-group-item:hover {
+    background-color: rgb(250, 236, 252);
+}
+
+.artist__list-group-item:active {
+    background-color: #F3D9F6;
+}
+
+.artist__list-group-item:focus {
+    border-color: #E9CFEC;
+    box-shadow: 0 0 0 0.2rem rgba(233,207,236,.5);
+}
+

@@ -49,7 +49,7 @@ class Main extends Component {
         console.log(this.state.addText);
         console.log(this.state.oldArtist);
         return (
-            <div className='Main'>
+            <div className='main'>
                 <UserSearch
                     onAddTextChange={this.handleAddTextChange}
                     value={this.state.addText}

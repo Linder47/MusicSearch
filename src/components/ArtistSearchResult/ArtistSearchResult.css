@@ -1,3 +1,8 @@
-.pannel {
+.panel__title {
     text-align: center;
 }
+
+.panel__body {
+    margin-top: 13px;
+}
+

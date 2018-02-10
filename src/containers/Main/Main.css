@@ -1,13 +1,16 @@
-.Main {
+.main {
     /* display:grid;
     justify-content: center;
     
     margin: auto; */
-    background-color: rgb(233, 166, 166);
+    /* background-color: rgb(233, 166, 166); */
+    background-color: #FEFCFF;
     width: 800px;
     display: flex;
     margin: auto;
     flex-direction: column;
-    border: 7px solid #fff;
+    border: 7px solid #FEFCFF;
+    /* border-top: 7px solid rgb(250, 236, 252); */
+    margin-top: 20px;
     /* background-color: #fff; */
 }

@@ -18,13 +18,13 @@ class Artist extends Component {
 
     render() {
         return (
-            <div className="Artist">             
-                <ListGroupItem>
-                    <Link
-                        to={'/artist/' + this.props.artist.name}
-                        onClick={() => { this.onChoseArtist(this.props.artist).bind(this) }}>
-                        {this.props.artist.name}
-                    </Link>
+            <div className="artist">
+                <ListGroupItem
+                    className="artist__list-group-item"
+                    href={'/artist/' + this.props.artist.name}
+                    onClick={() => { this.onChoseArtist(this.props.artist).bind(this) }}>
+                    {this.props.artist.name}
+
                 </ListGroupItem>
             </div>
         )
