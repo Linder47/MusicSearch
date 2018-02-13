@@ -26,3 +26,14 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.app-main-page {
+  background-color: rgb(250, 236, 252);
+}
+
+.page-header {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  cursor: default;
+}

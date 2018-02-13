@@ -1,22 +1,57 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React  from 'react';
 import './App.css';
-//import 'bootstrap/less/bootstrap.less'
+import { Switch, Route } from 'react-router-dom';
+import Main from './containers/Main/Main';
+import Albums from './containers/Albums/Albums';
+import { PageHeader } from 'react-bootstrap';
 
-class App extends Component {
-  render() {
+const App = () => {
+  // state = {
+  //   chosenArtist: '',
+  //   artistData: []
+  // }
+
+  // componentWillMount() {
+  //   if (sessionStorage.getItem('artistData')) {
+  //     const artistData = JSON.parse(sessionStorage.getItem('artistData'));
+  //     const chosenArtist = artistData.name;
+
+  //     this.setState({
+  //       artistData,
+  //       chosenArtist,
+  //     });
+  //   }
+  // }
+
+  // handleComeBackSearching = () => {
+  //   this.props.history.goBack();
+  // }
+
+  // <Switch>
+  //         <Route path='/artist/' render={(props) => <Albums {...props}
+  //           chosenArtist={this.state.chosenArtist}
+  //           onComeBackSearching={this.handleComeBackSearching} />} />
+  //         <Route path='/' render={(props) => <Main {...props}
+  //           artistData={this.state.artistData}
+  //           chosenArtist={this.state.chosenArtist}
+  //         />}
+  //         /> }
+  //               />
+  //         </Switch>
+
+  // render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="app-main-page">
+        <div className="page-header">
+          <PageHeader>Music Search App</PageHeader>
+        </div>
+        <Switch>
+          <Route path='/artist/' component={Albums} />
+          <Route path='/' component={Main} />
+        </Switch>
       </div>
-    );
+    )
   }
-}
+// }
 
 export default App;

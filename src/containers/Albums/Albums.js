@@ -8,19 +8,32 @@ class Albums extends Component {
     state = {
         albums: [],
         error: null,
-        isLoaded: false
+        isLoaded: false,
+        chosenArtist: '',
+        artistData: []
+    }
+
+    componentWillMount() {
+        if (sessionStorage.getItem('artistData')) {
+            const artistData = JSON.parse(sessionStorage.getItem('artistData'));
+            const chosenArtist = artistData.name;
+
+            this.setState({
+                artistData,
+                chosenArtist,
+            });
+        }
     }
 
     componentDidMount() {
-        const chosenArtist = this.props.chosenArtist;
-        const URL_BASIC = 'http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=';
+        const chosenArtist = this.state.chosenArtist;
+        const URL_BASIC = 'https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=';
         const API_KEY = '&api_key=0b6cf004801c7d4b103426b29c6e006b&format=json';
         const URL = URL_BASIC + chosenArtist + API_KEY;
 
         fetch(URL)
             .then(res => res.json())
             .then((result) => {
-                console.log(result);
                 this.setState({
                     isLoaded: true,
                     albums: result.topalbums
@@ -41,7 +54,6 @@ class Albums extends Component {
     }
 
     render() {
-        console.log(this.state.albums);
         const { error, isLoaded, albums } = this.state;
 
         if (error) {
@@ -52,10 +64,10 @@ class Albums extends Component {
             return (
                 <div className='albums-container'>
                     <Panel>
-                        <Panel.Title componentClass="h3" className="panel__title--albums">Альбомы {this.props.chosenArtist}: </Panel.Title>
+                        <Panel.Title componentClass="h3" className="panel__title--albums">Альбомы {this.state.chosenArtist}: </Panel.Title>
                     </Panel>
                     <ButtonToolbar>
-                        <Button className="row__button--albums" onClick={() => { this.onComeBackSearching() }}>Назад</Button>
+                        <Button className="row__button--albums" onClick={() => { this.onComeBackSearching().bind(this) }}>Назад</Button>
                     </ButtonToolbar>
                     <div className='albums__albums'>
                         {albums.album.map(album =>

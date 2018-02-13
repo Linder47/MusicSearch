@@ -20,13 +20,12 @@ class ArtistSearchResult extends Component {
     }
 
     handleFetchMatchs = (neededArtist) => {
-        const URL_BASIC = 'http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=';
+        const URL_BASIC = 'https://ws.audioscrobbler.com/2.0/?method=artist.search&artist=';
         const API_KEY = '&api_key=0b6cf004801c7d4b103426b29c6e006b&format=json';
 
         fetch(URL_BASIC + neededArtist + API_KEY) //!
             .then(res => res.json())
             .then((results) => {
-                console.log(results);
                 this.setState({
                     isLoaded: true,
                     artistmat: results.results.artistmatches,
@@ -43,9 +42,7 @@ class ArtistSearchResult extends Component {
 
     componentDidMount() {
         const sA = this.props.searchingArtist;
-
         this.handleFetchMatchs(sA);
-        console.log(this.props);
     }
 
     componentDidUpdate(searchingArtist, sA) {
@@ -53,7 +50,6 @@ class ArtistSearchResult extends Component {
             const searchingArtist = this.props.searchingArtist;
 
             this.handleFetchMatchs(searchingArtist);
-            console.log(this.props);
 
             this.setState({
                 do: false
@@ -64,7 +60,6 @@ class ArtistSearchResult extends Component {
 
     render() {
         const { error, isLoaded, artistmat } = this.state;
-        console.log(artistmat);
 
         if (error) {
             return <div>Error: {error.message}</div>;

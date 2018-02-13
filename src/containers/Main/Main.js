@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './Main.css';
-import { Switch, Route } from 'react-router-dom';
 import ArtistSearchResult from '../../components/ArtistSearchResult/ArtistSearchResult';
-import Albums from '../Albums/Albums';
 import UserSearch from '../../components/UserSearch/UserSearch';
 
 class Main extends Component {
@@ -10,13 +8,27 @@ class Main extends Component {
         addText: '',
         searched: false,
         oldArtist: '',
+        chosenArtist: '',
+        artistData: []
     }
+    
+      componentWillMount() {
+        if (sessionStorage.getItem('artistData')) {
+          const artistData = JSON.parse(sessionStorage.getItem('artistData'));
+          const chosenArtist = artistData.name;
+    
+          this.setState({
+            artistData,
+            chosenArtist,
+          });
+        }
+      }
 
     handleAddTextChange = (text) => {
         this.setState({
             addText: text
         });
-    }
+    } 
 
     handleAddSearch = (e) => {
         e.preventDefault();
@@ -46,8 +58,6 @@ class Main extends Component {
     }
 
     render() {
-        console.log(this.state.addText);
-        console.log(this.state.oldArtist);
         return (
             <div className='main'>
                 <UserSearch
