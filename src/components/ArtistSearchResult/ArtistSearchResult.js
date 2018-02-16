@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './ArtistSearchResult.css';
 import Artist from '../Artist/Artist';
+import Spinner from '../Spinner/Spinner';
 import { ListGroup, Panel } from 'react-bootstrap';
+
 
 class ArtistSearchResult extends Component {
     state = {
@@ -59,14 +61,15 @@ class ArtistSearchResult extends Component {
 
 
     render() {
+        console.log(this.props.searchingArtist);
         const { error, isLoaded, artistmat } = this.state;
 
         if (error) {
-            return <div>Error: {error.message}</div>;
+            return <div className="errorText">Error: {error.message}</div>;
         } else if (!isLoaded) {
-            return <div>Loading...</div>;
+            return <div className="spin"><Spinner color={'#F5E3FA'} /></div>;
         } else if (artistmat.artist.length === 0) {
-            return <div>Такого артиста нет.</div>
+            return <div className="errorText">Такого артиста нет.</div>
 
         } else {
             return (

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './Albums.css';
 import Album from '../../components/Album/Album';
 import { ButtonToolbar, Button, Panel } from 'react-bootstrap';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import Spinner from '../../components/Spinner/Spinner';
 
 class Albums extends Component {
     state = {
@@ -57,26 +58,30 @@ class Albums extends Component {
         const { error, isLoaded, albums } = this.state;
 
         if (error) {
-            return <div>Error: {error.message}</div>;
+            return <div className="errorText">Error: {error.message}</div>;
         } else if (!isLoaded) {
-            return <div>Loading...</div>;
+            return <div className="spin"><Spinner color={'#ffffff'} /></div>;
         } else {
             return (
-                <div className='albums-container'>
+                <div className='container'>
                     <Panel>
-                        <Panel.Title componentClass="h3" className="panel__title--albums">Альбомы {this.state.chosenArtist}: </Panel.Title>
+                        <Panel.Title componentClass="h3" className="title">Альбомы {this.state.chosenArtist}: </Panel.Title>
                     </Panel>
                     <ButtonToolbar>
-                        <Button className="row__button--albums" onClick={() => { this.onComeBackSearching().bind(this) }}>Назад</Button>
+                        <Button className="button__albums" onClick={() => { this.onComeBackSearching().bind(this) }}>Назад</Button>
                     </ButtonToolbar>
                     <div className='albums__albums'>
                         {albums.album.map(album =>
-                            album.image[2]["#text"] ? <Album
-                                key={album.name + album.id}
-                                id={album.name + album.id}
-                                image={album.image[2]["#text"]}
-                            />
-                                : null
+                            album ?
+                                album.image[2]["#text"] ? <Album
+                                    name={album.name}
+                                    key={album.name + album.id}
+                                    id={album.name + album.id}
+                                    image={album.image[2]["#text"]}
+                                    album={album}
+                                />
+                                    : null
+                                : <div className="errorText">Альбомов нет.</div>
                         )}
                     </div>
                 </div>

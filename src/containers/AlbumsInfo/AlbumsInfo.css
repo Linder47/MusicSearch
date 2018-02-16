@@ -1,0 +1,33 @@
+.title--artist {
+    margin-bottom: 12px;
+}
+
+.table-data td,
+.table-songs td,
+.table-titles th {
+    padding: 6px;
+    border-color: rgb(250, 236, 252);
+}
+
+.table-data tr {
+    width: 100%;
+}
+
+.table-data tr:first-child td,
+.table-titles th {
+    border-top: none;
+}
+
+.table-data td:first-child {
+    width: 30%;
+}
+
+.crown {
+    margin: auto;
+    margin-bottom: 6px;
+    margin-top: 5px;
+}
+
+.container--artist {
+    background-color: #FEFCFF;
+}

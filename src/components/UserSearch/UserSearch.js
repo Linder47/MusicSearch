@@ -4,23 +4,23 @@ import { Form, FormGroup, ControlLabel, FormControl, Button, Col, Row } from 're
 
 const UserSearch = (props) => {
     return (
-        <div className='user-search-form'>
+        <div className='form'>
             <Form horizontal onSubmit={props.onAddSearch}>
                 <FormGroup controlId='formHorizontalSearch'>
-                    <Row className="user-search-form__row-input">
-                        <Col className="user-search-form__row-search-label-col" componentClass={ControlLabel} sm={2}>
-                            <p className="user-search-form__row-search-label-col">Поиск:</p>
+                    <Row className="form__input">
+                        <Col className="form__search-label-col" componentClass={ControlLabel} sm={2}>
+                            <p className="form__search-label">Поиск:</p>
                         </Col>
                         <Col sm={8}>
                             <FormControl
-                                className="user-search-form__row-form-control"
+                                className="form__form-control"
                                 type='text'
                                 value={props.value}
                                 maxLength="60"
                                 onChange={(e) => { props.onAddTextChange(e.target.value) }} />
                         </Col>
-                        <Col className="user-search-form__row-button-col" sm={2}>
-                            <Button className="user-search-form__row-button" type='submit'>
+                        <Col className="form__button-col" sm={2}>
+                            <Button className="form__button" type='submit'>
                                 Искать</Button>
                         </Col>
                     </Row>

@@ -4,7 +4,7 @@ import { ListGroupItem } from 'react-bootstrap';
 
 class Artist extends Component {
     onChoseArtist = (artist) => {
-        sessionStorage.clear();
+        // sessionStorage.clear();
         sessionStorage.setItem('artistData', JSON.stringify(artist));
     }
 
@@ -12,9 +12,9 @@ class Artist extends Component {
         return (
             <div className="artist">
                 <ListGroupItem
-                    className="artist__list-group-item"
-                    href={'/artist/' + this.props.artist.name}
-                    onClick={() => { this.onChoseArtist(this.props.artist).bind(this) }}>
+                    className="artist__item"
+                    href={'/MusicSearch/artist/' + this.props.artist.name}
+                    onClick={() => { this.onChoseArtist(this.props.artist) }}>
                     {this.props.artist.name}
 
                 </ListGroupItem>

@@ -1,4 +1,4 @@
-.user-search-form {
+.form {
     width: 780px;
     display: flex;
     align-content: center;
@@ -7,37 +7,37 @@
     margin-top: 10px;
 }
 
-.user-search-form__row-input {
+.form__input {
     align-content: center;
     /* background-color: azure; */
     width: 780px;
     display: flex;
 }
 
-.user-search-form__row-search-label-col,
-.user-search-form__row-search-label,
-.user-search-form__row-button-col,
-.user-search-form__row-button {
+.form__search-label-col,
+.form__search-label,
+.form__button-col,
+.form__button {
     display: flex;
     margin: auto;
 }
 
-.user-search-form__row-form-control:focus,
-.user-search-form__row-button:focus {
+.form__form-control:focus,
+.form__button:focus {
     border-color: #E9CFEC;
     box-shadow: 0 0 0 0.2rem rgba(233,207,236,.5);
 }
 
-.user-search-form__row-form-control:active,
-.user-search-form__row-button:active {
+.form__form-control:active,
+.form__button:active {
     border-color: rgb(216, 181, 221);
     box-shadow: 0 0 0 0.2rem rgba(233,207,236,.65);
 }
 
-.user-search-form__row-button {
+.form__button {
     background-color: #F5E3FA;
 }
 
-.user-search-form__row-button:active {
+.form__button:active {
     background-color: #F3D9F6;
 }

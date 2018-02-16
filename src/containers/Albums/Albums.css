@@ -1,4 +1,4 @@
-.albums-container {
+.container {
     /* background-color: #fff; */
     width: 800px;
     display: flex;
@@ -18,20 +18,32 @@
     margin-top: 13px;
 }
 
-.panel__title--albums {
+.title {
     text-align: center;
     margin-top: 10px;
 }
 
-.row__button--albums {
+.button__albums {
     display: flex;
     margin: auto;
     background-color: #FEFCFF;
 }
 
-.row__button--albums:active,
-.row__button--albums:focus {
+.button__albums:active,
+.button__albums:focus {
     border-color: rgb(216, 181, 221);
     box-shadow: 0 0 0 0.2rem rgba(233,207,236,.65);
     background-color: #FEFCFF;
+}
+
+.spin {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.errorText {
+    display: flex;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 27px;
 }

@@ -8,18 +8,17 @@ class Main extends Component {
         addText: '',
         searched: false,
         oldArtist: '',
-        chosenArtist: '',
         artistData: []
     }
     
       componentWillMount() {
         if (sessionStorage.getItem('artistData')) {
           const artistData = JSON.parse(sessionStorage.getItem('artistData'));
-          const chosenArtist = artistData.name;
+          const oldArtist = artistData.name;
     
           this.setState({
             artistData,
-            chosenArtist,
+            oldArtist,
           });
         }
       }
@@ -45,7 +44,7 @@ class Main extends Component {
 
     componentDidMount() {      
         if (this.props.history.location.pathname !== '/' ) {
-            const path = this.props.history.location.pathname
+            const path = this.props.history.location.pathname;
             const ind = path.indexOf('/', 1);
             const artist = path.substr(ind+1);
 

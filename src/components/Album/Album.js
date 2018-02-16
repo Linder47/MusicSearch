@@ -1,13 +1,25 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './Album.css';
-import { Image } from 'react-bootstrap';
+import { Thumbnail } from 'react-bootstrap';
 
-const Album = (props) => {
-    return (
-        <div className='album'>
-            <Image src={props.image} alt={props.id} rounded />
-        </div>
-    )
+class Album extends Component {
+    onChoseAlbum = (album) => {
+        sessionStorage.setItem('albumSearch', JSON.stringify(album));
+    }
+
+    render() {
+        return (
+            <div className='album'>
+                <Thumbnail
+                    src={this.props.image}
+                    alt={this.props.id}
+                    href={'/MusicSearch/album/' + this.props.name}
+                    onClick={() => { this.onChoseAlbum(this.props.album) } }/>
+            </div>
+        )
+    }
 }
 
-export default Album;
+
+
+    export default Album;

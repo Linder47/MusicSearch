@@ -6,3 +6,16 @@
     margin-top: 13px;
 }
 
+.spin {
+    display: flex;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.errorText {
+    display: flex;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 27px;
+}
