@@ -1,5 +1,11 @@
 .title--artist {
-    margin-bottom: 12px;
+    margin-bottom: 15px;
+    margin-top: 28px;
+    color: #C48793;
+}
+
+.table-data {
+    margin-bottom: 31px;
 }
 
 .table-data td,
@@ -19,7 +25,7 @@
 }
 
 .table-data td:first-child {
-    width: 30%;
+    width: 40%;
 }
 
 .crown {
@@ -30,4 +36,27 @@
 
 .container--artist {
     background-color: #FEFCFF;
+}
+
+.form__button--albumsInfo {
+    margin-bottom: 20px;
+}
+
+.album-image-table {
+    width: 100%;
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 22px;
+    /* flex-wrap: nowrap; */
+}
+
+.title-table {
+    width: 100%;
+    margin-left: 22px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.table thead th {
+    border-bottom: 2px solid rgb(250, 236, 252);
 }

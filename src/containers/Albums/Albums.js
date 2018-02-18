@@ -63,7 +63,7 @@ class Albums extends Component {
             return <div className="spin"><Spinner color={'#ffffff'} /></div>;
         } else {
             return (
-                <div className='container'>
+                <div className='container  container--albums'>
                     <Panel>
                         <Panel.Title componentClass="h3" className="title">Альбомы {this.state.chosenArtist}: </Panel.Title>
                     </Panel>
@@ -71,18 +71,20 @@ class Albums extends Component {
                         <Button className="button__albums" onClick={() => { this.onComeBackSearching().bind(this) }}>Назад</Button>
                     </ButtonToolbar>
                     <div className='albums__albums'>
-                        {albums.album.map(album =>
-                            album ?
-                                album.image[2]["#text"] ? <Album
-                                    name={album.name}
-                                    key={album.name + album.id}
-                                    id={album.name + album.id}
-                                    image={album.image[2]["#text"]}
-                                    album={album}
-                                />
-                                    : null
-                                : <div className="errorText">Альбомов нет.</div>
-                        )}
+                        <div className='albums__cont'>
+                            {albums.album.map(album =>
+                                album ?
+                                    album.image[2]["#text"] ? <Album
+                                        name={album.name}
+                                        key={album.name + album.id}
+                                        id={album.name + album.id}
+                                        image={album.image[2]["#text"]}
+                                        album={album}
+                                    />
+                                        : null
+                                    : <div className="errorText">Альбомов нет.</div>
+                            )}
+                        </div>
                     </div>
                 </div>
             )

@@ -7,7 +7,7 @@ const Song = (props) => {
         <tr>
             <td>{props.id}</td>
             <td>{props.title}</td>
-            <td>{props.duration}</td>
+            <td>{parseInt(props.duration/60, 10)}:{props.duration%60 < 10 ? '0'+props.duration%60 : props.duration%60}</td>
         </tr>
     )
 }

@@ -6,16 +6,26 @@
     flex-direction: column;
     border: 7px solid #FEFCFF;
     margin-top: 20px;
+    box-sizing: border-box;
+}
+
+.container--albums {
+    padding: 0px;
 }
 
 .albums__albums {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    margin: auto;
-    margin-left: 30px;
-    margin-right: 20px;
+    /* margin: auto; */
+    margin-left: 10px;
     margin-top: 13px;
+}
+
+.albums__cont {
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .title {
