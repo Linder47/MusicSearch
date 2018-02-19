@@ -3,7 +3,7 @@ import './Albums.css';
 import Album from '../../components/Album/Album';
 import { ButtonToolbar, Button, Panel } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
-import Spinner from '../../components/Spinner/Spinner';
+import Spin from '../../components/Spinner/Spin';
 
 class Albums extends Component {
     state = {
@@ -60,7 +60,12 @@ class Albums extends Component {
         if (error) {
             return <div className="errorText">Error: {error.message}</div>;
         } else if (!isLoaded) {
-            return <div className="spin"><Spinner color={'#ffffff'} /></div>;
+            return (
+                <div className='container  container--albums'>
+                    <Spin/>
+                </div>
+            )
+            // <div className="spin"><Spinner color={'#ffffff'} /></div>;
         } else {
             return (
                 <div className='container  container--albums'>
@@ -68,7 +73,7 @@ class Albums extends Component {
                         <Panel.Title componentClass="h3" className="title">Альбомы {this.state.chosenArtist}: </Panel.Title>
                     </Panel>
                     <ButtonToolbar>
-                        <Button className="button__albums" onClick={() => { this.onComeBackSearching().bind(this) }}>Назад</Button>
+                        <Button className="button__albums" onClick={() => { this.onComeBackSearching()}}>Назад</Button>
                     </ButtonToolbar>
                     <div className='albums__albums'>
                         <div className='albums__cont'>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ArtistSearchResult.css';
 import Artist from '../Artist/Artist';
-import Spinner from '../Spinner/Spinner';
+import Spin from '../../components/Spinner/Spin';
 import { ListGroup, Panel } from 'react-bootstrap';
 
 
@@ -67,7 +67,11 @@ class ArtistSearchResult extends Component {
         if (error) {
             return <div className="errorText">Error: {error.message}</div>;
         } else if (!isLoaded) {
-            return <div className="spin"><Spinner color={'#F5E3FA'} /></div>;
+            return (
+                <div className='container  container--albums'>
+                    <Spin/>
+                </div>
+            )
         } else if (artistmat.artist.length === 0) {
             return <div className="errorText">Такого артиста нет.</div>
 

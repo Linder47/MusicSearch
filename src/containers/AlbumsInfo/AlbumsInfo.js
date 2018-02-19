@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './AlbumsInfo.css';
 import '../../components/UserSearch/UserSearch.css';
-import Spinner from '../../components/Spinner/Spinner';
+import Spin from '../../components/Spinner/Spin';
 import { Panel, Table, ButtonToolbar, Button, Image } from 'react-bootstrap';
 import Song from '../../components/Song/Song';
 
@@ -49,7 +49,11 @@ class AlbumsInfo extends Component {
         if (error) {
             return <div className="errorText">Error: {error.message}</div>;
         } else if (!isLoaded) {
-            return <div className="spin"><Spinner color={'#ffffff'} /></div>;
+            return (
+                <div className='container  container--albums'>
+                    <Spin/>
+                </div>
+            )
         } else if (!albumData) {
             return <div className="container container--artist">
                 <div className="errorText">Sorry, there's no information about this album.</div>
@@ -98,9 +102,8 @@ class AlbumsInfo extends Component {
                         </thead>
                         <tbody className="table-songs">
                             {albumData.tracks.track.map((track, i) => {
-                                i++;
                                 return <Song
-                                    id={i}
+                                    id={i+1}
                                     key={i}
                                     title={track.name}
                                     duration={track.duration}

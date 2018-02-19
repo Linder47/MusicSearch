@@ -4,9 +4,8 @@
 You can build search for artists and their albums.
 
 Build with:
-<ul>
-  <li>React</li>
- <li>React Router</li>
-  </ul>
+
+- React
+- React Router
 
 You can try it on GitHub Pages: https://linder47.github.io/MusicSearch/
