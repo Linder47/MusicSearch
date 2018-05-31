@@ -56,7 +56,7 @@ class AlbumsInfo extends Component {
             )
         } else if (!albumData) {
             return <div className="container container--artist">
-                <div className="errorText">Sorry, there's no information about this album.</div>
+                <div className="errorText">Sorry, there is no information about this album.</div>
                 <ButtonToolbar>
                     <Button className="form__button  form__button--albumsInfo" onClick={() => { this.onComeBackSearching() }}>Назад</Button>
                 </ButtonToolbar>
